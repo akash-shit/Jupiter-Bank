@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  // baseURL: "https://jupiter-bank.onrender.com/api",
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://jupiter-bank.onrender.com/api/auth",
+  //baseURL: "http://localhost:3000/api",
   withCredentials: true,
 });
 
