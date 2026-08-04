@@ -12,6 +12,7 @@ import Profile from "../pages/Dashboard/Profile";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import AddFunds from "../pages/Dashboard/AddFunds";
+import CreateAccount from "../pages/Dashboard/CreateAccount";
 
 function AppRoutes() {
   return (
@@ -80,6 +81,17 @@ function AppRoutes() {
             </ProtectedRoute>
           }
         />
+
+          <Route
+            path="/create-account"
+            element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <CreateAccount />
+              </DashboardLayout>
+            </ProtectedRoute>
+            }
+          />
 
         <Route
           path="/add-funds"

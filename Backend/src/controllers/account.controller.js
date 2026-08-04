@@ -124,17 +124,24 @@ async function addFundsController(req, res) {
 }
 
 async function createAccountController(req, res) {
-
     const user = req.user;
+    const existingAccount = await accountModel.findOne({
+        user: user._id
+    });
+    console.log("Existing account:", existingAccount);
+    if (existingAccount) {
+        return res.status(400).json({
+            message: "You already have a bank account."
+        });
 
+    }
     const account = await accountModel.create({
         user: user._id
-    })
-
+    });
     res.status(201).json({
+        message: "Account created successfully",
         account
-    })
-
+    });
 }
 
 async function getUserAccountsController(req, res) {

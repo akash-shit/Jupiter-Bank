@@ -32,7 +32,7 @@ function Login() {
       setLoading(true);
 
       const response = await loginUser(formData);
-      login(response.data.user);
+      login(response.data.user, response.data.token);
 
       toast.success(response.data.message || "Login Successful");
 

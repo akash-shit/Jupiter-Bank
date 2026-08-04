@@ -5,6 +5,7 @@ import {
   FaHistory,
   FaUser,
   FaSignOutAlt,
+  FaUniversity,
 } from "react-icons/fa";
 
 import { NavLink, useNavigate } from "react-router-dom";
@@ -36,6 +37,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       name: "Dashboard",
       path: "/dashboard",
       icon: <FaHome />,
+    },
+    {
+      name: "Create Account",
+      path: "/create-account",
+      icon: <FaUniversity />,
     },
     {
       name: "Balance",

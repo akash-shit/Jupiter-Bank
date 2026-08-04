@@ -65,7 +65,7 @@ function Accounts() {
 
             <div
               key={account._id}
-              className="rounded-xl bg-blue-50 p-5 shadow flex items-center justify-between"
+              className="mb-3 rounded-xl bg-blue-50 p-5 shadow flex items-center justify-between"
             >
               <div>
                 <h3 className="text-green-700 font-medium text-[0.6rem]">

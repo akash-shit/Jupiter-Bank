@@ -35,7 +35,7 @@ function Register() {
 
       const response = await registerUser(formData);
 
-      login(response.data.user);
+      login(response.data.user, response.data.token);
 
       toast.success("Registration Successful");
 
