@@ -52,14 +52,14 @@ function Dashboard() {
       {/* Welcome */}
       <div className=" bg-blue-50 p-4 rounded-lg shadow flex items-center justify-between ">
         <h1>
-          <p className="text-gray-800 text-lg font-semibold">Welcome,</p>
-          <p className="text-blue-600 text-2xl font-semibold">{user?.name} 👋</p>
-          <p className="text-gray-500 text-[0.6rem]">
+          <p className="text-gray-800 text-xl font-semibold">Welcome,</p>
+          <p className="text-blue-600 text-3xl font-semibold">{user?.name} 👋</p>
+          <p className="text-gray-500 text-[0.7rem]">
             Manage your money and <br /> track your transactions easily with Jupitar Bank.
           </p>
         </h1>
-        <div className="hidden md:block">
-          <img src={bankImage} className=" h-25 object-contain" />
+        <div className="md:block">
+          <img src={bankImage} className="h-20 w-35 md:h-25 object-contain" />
         </div>
       </div>
 
@@ -68,12 +68,12 @@ function Dashboard() {
 
         {/* Balance */}
         <div className="rounded-2xl bg-white p-4 shadow flex gap-2">
-          <FaWallet className="text-3xl text-blue-600 p-2 rounded-lg bg-blue-100" />
+          <FaWallet className="text-6xl mr-1 md:text-4xl text-blue-600 p-2 rounded-lg bg-blue-100" />
           <div className="items-center justify-between">
-            <h3 className="text-gray-500 font-medium text-[0.7rem]">
+            <h3 className="text-gray-500 font-medium text-[0.8rem]">
               Balance
             </h3>
-            <h2 className="text-lg font-semibold text-black-600">
+            <h2 className="text-xl font-semibold text-black-600">
               ₹ {loading ? "..." : balance}
             </h2>
             <h3 className="text-green-700 font-medium text-[0.6rem]">
@@ -84,11 +84,11 @@ function Dashboard() {
 
         {/* Account Status */}
         <div className="rounded-2xl bg-white p-4 shadow">
-          <p className="text-gray-500 mb-1 font-medium text-[0.7rem]">
+          <p className="text-gray-500 mb-1 font-medium text-[0.8rem]">
             Account Status
           </p>
 
-          <h2 className="text-sm font-semibold text-black-600 text-green-700">
+          <h2 className="text-lg font-semibold text-black-600 text-green-700">
             {loading ? "..." : account?.status}
           </h2>
         </div>
@@ -106,7 +106,7 @@ function Dashboard() {
                   Account ID
                 </p>
               </div>
-                <p className="text-[0.6rem] font-semibold text-black-600">
+                <p className="text-[0.7rem] md:text-[0.6rem] font-semibold text-black-600">
                   {account._id}
                 </p>
               {/* </div> */}
@@ -137,7 +137,7 @@ function Dashboard() {
             >
               <FaUserCircle className="mx-auto mb-3 text-2xl text-purple-600" />
               <p className="text-sm font-semibold text-black">Profile</p>
-              <p className="text-gray-700 font-medium text-[0.6rem]">View your profile</p>
+              <p className="text-gray-700 font-medium text-[0.7rem] md:text-[0.6rem]">View your profile</p>
             </Link>
 
             <Link
@@ -146,7 +146,7 @@ function Dashboard() {
             >
               <FaWallet className="mx-auto mb-3 text-2xl text-blue-600" />
               <p className="text-sm font-semibold text-black">Add Funds</p>
-              <p className="text-gray-700 font-medium text-[0.6rem]">Add money to your account</p>
+              <p className="text-gray-700 font-medium text-[0.7rem] md:text-[0.6rem]">Add money to your account</p>
             </Link>
 
             <Link
@@ -155,7 +155,7 @@ function Dashboard() {
             >
               <FaExchangeAlt className="mx-auto mb-3 text-2xl text-green-600" />
               <p className="text-sm font-semibold text-black">Transfer Money</p>
-              <p className="text-gray-700 font-medium text-[0.6rem]">Send money to anyone</p>
+              <p className="text-gray-700 font-medium text-[0.7rem] md:text-[0.6rem]">Send money to anyone</p>
             </Link>
 
             <Link
@@ -164,7 +164,7 @@ function Dashboard() {
             >
               <FaHistory className="mx-auto mb-3 text-2xl text-slate-600" />
               <p className="text-sm font-semibold text-black">Transactions</p>
-              <p className="text-gray-700 font-medium text-[0.6rem]">Check your transaction history</p>
+              <p className="text-gray-700 font-medium text-[0.7rem] md:text-[0.6rem]">Check your transaction history</p>
             </Link>
 
           </div>

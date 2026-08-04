@@ -128,7 +128,7 @@ async function createAccountController(req, res) {
     const existingAccount = await accountModel.findOne({
         user: user._id
     });
-    console.log("Existing account:", existingAccount);
+
     if (existingAccount) {
         return res.status(400).json({
             message: "You already have a bank account."

@@ -8,6 +8,7 @@ const tokenBlackListModel = require("../models/blackList.model")
 * - POST /api/auth/register
 */
 async function userRegisterController(req, res) {
+    
     const { email, password, name } = req.body
 
     const isExists = await userModel.findOne({
@@ -37,8 +38,9 @@ async function userRegisterController(req, res) {
         },
         token
     })
-
+    
     await emailService.sendRegistrationEmail(user.email, user.name)
+    
 }
 
 /**
