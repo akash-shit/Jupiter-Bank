@@ -242,7 +242,7 @@ async function getTransactions(req, res) {
             user: req.user._id,
         });
 
-        const accountIds = accounts.map(acc => acc._id.toString());
+        const accountIds = accounts.map(acc => acc._id);
 
         const transactions = await transactionModel
             .find({
@@ -255,31 +255,45 @@ async function getTransactions(req, res) {
                 path: "fromAccount",
                 populate: {
                     path: "user",
-                    select: "name email"
+                    select: "name email +systemUser"
                 }
             })
             .populate({
                 path: "toAccount",
                 populate: {
                     path: "user",
-                    select: "name email"
+                    select: "name email +systemUser"
                 }
             })
             .sort({ createdAt: -1 });
-
+            
         const formattedTransactions = transactions.map(tx => {
-            const isCredit =
-                tx.toAccount._id.toString() === accountIds[0];
+    const isCredit = accountIds.some(
+        id => id.toString() === tx.toAccount._id.toString()
+    );
 
-            return {
-                ...tx.toObject(),
-                isCredit,
-                otherUser: isCredit
-                    ? tx.fromAccount.user.name
-                    : tx.toAccount.user.name
-            };
-        });
+    let otherUser;
 
+    if (isCredit) {
+    if (tx.fromAccount?.user?.systemUser) {
+        otherUser = "System";
+    } else {
+        otherUser = tx.fromAccount?.user?.name || "Unknown";
+    }
+} else {
+    if (tx.toAccount?.user?.systemUser) {
+        otherUser = "System";
+    } else {
+        otherUser = tx.toAccount?.user?.name || "Unknown";
+    }
+}
+
+    return {
+        ...tx.toObject(),
+        isCredit,
+        otherUser,
+    };
+});
         res.status(200).json({
             transactions: formattedTransactions
         });
