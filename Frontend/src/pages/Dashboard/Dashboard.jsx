@@ -102,11 +102,11 @@ function Dashboard() {
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <FaUserCircle className="text-3xl text-blue-600" />
-                <p className="text-gray-500 font-medium text-[0.7rem]">
+                <p className="text-gray-500 font-medium text-[0.8rem]">
                   Account ID
                 </p>
               </div>
-                <p className="text-[0.7rem] md:text-[0.6rem] font-semibold text-black-600">
+                <p className="text-[0.9rem] md:text-[0.6rem] font-semibold text-black-600">
                   {account._id}
                 </p>
               {/* </div> */}
