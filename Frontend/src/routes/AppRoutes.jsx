@@ -13,6 +13,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import AddFunds from "../pages/Dashboard/AddFunds";
 import CreateAccount from "../pages/Dashboard/CreateAccount";
+import NotFound from "../pages/Dashboard/NotFound";
 
 function AppRoutes() {
   return (
@@ -105,7 +106,7 @@ function AppRoutes() {
         />
 
         {/* If route doesn't exist */}
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

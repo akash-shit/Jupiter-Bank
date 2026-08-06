@@ -40,60 +40,61 @@ function Accounts() {
     }
   }
 
-  // async function handleCreateAccount() {
-  //   try {
-  //     await createAccount();
+  if (loading) {
+    return (
+      <div className="flex min-h-[80vh] items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+      </div>
+    );
+  }
 
-  //     toast.success("Account Created");
-
-  //     fetchAccounts();
-  //   } catch (err) {
-  //     toast.error("Could not create account");
-  //   }
-  // }
+  if (accounts.length === 0) {
+    return (
+      <div className="rounded-xl bg-white p-6 text-center shadow">
+        No accounts found.
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
-      {loading ? (
-        <p>Loading...</p>
-      ) : accounts.length === 0 ? (
-        <p>No accounts found.</p>
-      ) : (
-        <div className="grid">
+      <div className="grid">
+        {accounts.map((account) => (
+          <div
+            key={account._id}
+            className="mb-3 flex items-center justify-between rounded-xl bg-blue-50 p-5 shadow"
+          >
+            <div>
+              <h3 className="text-[0.6rem] font-medium text-green-700">
+                Available Balance
+              </h3>
 
-          {accounts.map((account) => (
+              <p className="text-3xl font-bold text-black">
+                ₹ {balances[account._id] ?? 0}
+              </p>
 
-            <div
-              key={account._id}
-              className="mb-3 rounded-xl bg-blue-50 p-5 shadow flex items-center justify-between"
-            >
-              <div>
-                <h3 className="text-green-700 font-medium text-[0.6rem]">
-                  Avaiable Balance
-                </h3>
-                <p className="text-3xl font-bold text-black">
-                  ₹ {balances[account._id] ?? 0}
-                </p>
+              <p className="mt-2 text-[0.7rem] text-gray-600">
+                ID: {account._id}
+              </p>
 
-                <p className="mt-2 text-gray-600 text-[0.7rem]">
-                  ID: {account._id}
-                </p>
-
-                <p className="mt-2 text-[0.7rem]">
-                  Status:
-                  <span className="rounded px-2 py-1 text-[0.7rem] text-green-700">
-                    {account.status}
-                  </span>
-                </p>
-              </div>
-              <div className="hidden md:block">
-                <img src={bankImage} className=" h-25 object-contain" />
-              </div>
+              <p className="mt-2 text-[0.7rem]">
+                Status:
+                <span className="rounded px-2 py-1 text-[0.7rem] text-green-700">
+                  {account.status}
+                </span>
+              </p>
             </div>
-          ))}
-        
-        </div>
-      )}
+
+            <div className="hidden md:block">
+              <img
+                src={bankImage}
+                alt="Bank"
+                className="h-25 object-contain"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

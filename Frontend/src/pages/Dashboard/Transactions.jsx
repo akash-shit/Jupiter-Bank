@@ -23,7 +23,11 @@ function Transactions() {
   }
 
   if (loading) {
-    return <p className="text-center text-lg">Loading...</p>;
+    return (
+      <div className="flex min-h-[80vh] items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+      </div>
+    );
   }
 
   return (
